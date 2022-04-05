@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/resources/strings.dart';
+import 'package:weatherapp/services/weather_services.dart';
 
 // ignore: must_be_immutable
 class SearchPage extends StatelessWidget {
@@ -8,7 +10,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search a City'),
+        title: const Text(AppString.titleSearchPageAppBar),
       ),
       body: Center(
         child: Padding(
@@ -16,7 +18,8 @@ class SearchPage extends StatelessWidget {
           child: TextField(
             onSubmitted: (String data) {
               cityName = data;
-              print(cityName);
+              WeatherServices services = WeatherServices();
+              services.getCityId(cityName: cityName!);
             },
             decoration: const InputDecoration(
               contentPadding:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/resources/strings.dart';
 import 'package:weatherapp/ui/pages/search_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,39 +9,40 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return SearchPage();
-                }),
-              );
-            },
-            icon: const Icon(Icons.search),
-          ),
+        actions: const [
+          SearchButton(),
         ],
-        title: const Text('Weather App'),
+        title: const Text(AppString.titleHomePageAppBar),
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Text(
-              'There is no weather 😔 start',
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              'searching now 🔍',
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            )
-          ],
+      body: const Center(
+        child: Text(
+          AppString.titleHomePage,
+          style: TextStyle(
+            fontSize: 30,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
+    );
+  }
+}
+
+class SearchButton extends StatelessWidget {
+  const SearchButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) {
+            return SearchPage();
+          }),
+        );
+      },
+      icon: const Icon(Icons.search),
     );
   }
 }
