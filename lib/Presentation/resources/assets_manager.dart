@@ -1,4 +1,4 @@
-import 'package:weatherapp/resources/constants.dart';
+import 'package:weatherapp/Presentation/resources/constants.dart';
 
 class ImageAseets {
   static const String clearImage = '$pathImage/clear.png';

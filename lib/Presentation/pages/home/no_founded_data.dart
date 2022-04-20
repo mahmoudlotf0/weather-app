@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/resources/strings.dart';
+import 'package:weatherapp/Presentation/resources/strings.dart';
 
 class NoFoundedData extends StatelessWidget {
   const NoFoundedData({

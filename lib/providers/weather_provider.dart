@@ -1,7 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 import 'package:weatherapp/models/weather_model.dart';
 
-class WeatherProvider {
-  WeatherModel? weatherData;
+class WeatherProvider extends ChangeNotifier {
+  WeatherModel? _weatherData;
+  set weatherData(WeatherModel? weather) {
+    _weatherData = weather;
+    notifyListeners();
+  }
+
+  WeatherModel? get weatherData => _weatherData;
 }

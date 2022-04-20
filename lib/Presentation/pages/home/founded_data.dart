@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/resources/assets_manager.dart';
+import 'package:weatherapp/Presentation/resources/assets_manager.dart';
 
 class FoundedData extends StatelessWidget {
   const FoundedData({
