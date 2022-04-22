@@ -9,11 +9,13 @@ import 'package:weatherapp/services/weather_services.dart';
 class SearchPage extends StatelessWidget {
   SearchPage({Key? key}) : super(key: key);
   String? cityName;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppString.titleSearchPageAppBar),
+        elevation: 0,
       ),
       body: Center(
         child: Padding(
@@ -25,10 +27,11 @@ class SearchPage extends StatelessWidget {
             onSubmitted: (String data) async {
               cityName = data;
               WeatherServices services = WeatherServices();
-              WeatherModel weather =
+              WeatherModel? weather =
                   await services.getWeather(cityName: cityName!);
               Provider.of<WeatherProvider>(context, listen: false).weatherData =
                   weather;
+              weather?.cityName = cityName!;
               Navigator.of(context).pop();
             },
             decoration: InputDecoration(
@@ -38,7 +41,7 @@ class SearchPage extends StatelessWidget {
                 icon: const Icon(Icons.search),
                 onPressed: () async {
                   WeatherServices services = WeatherServices();
-                  WeatherModel weather =
+                  WeatherModel? weather =
                       await services.getWeather(cityName: cityName!);
                   Provider.of<WeatherProvider>(context, listen: false)
                       .weatherData = weather;
